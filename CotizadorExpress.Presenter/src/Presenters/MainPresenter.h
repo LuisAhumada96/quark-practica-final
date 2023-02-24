@@ -1,4 +1,7 @@
 #pragma once
+
+#include "../Interfaces/IView.h"
+
 class MainPresenter
 {
 	IView* m_view = nullptr;
