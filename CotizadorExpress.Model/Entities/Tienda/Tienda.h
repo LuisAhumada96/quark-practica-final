@@ -4,12 +4,12 @@
 class Tienda
 {
 private:
-	char* m_nombre;
-	char* m_direccion;
-	std::list<Prenda*> l_prendas;
+	std::string m_nombre;
+	std::string m_direccion;
+	std::list<Prenda*> l_prendasStock;
 public:
-	Tienda(char *nombre, char* direccion);
+	Tienda(std::string nombre, std::string direccion);
 	~Tienda();
-	Prenda* BuscarPrenda(char* m_nombre);
+	Prenda* BuscarPrenda(char* nombre);
 };
 

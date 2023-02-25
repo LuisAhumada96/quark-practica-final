@@ -2,11 +2,11 @@
 #include "Pantalon.h"
 #include <string>
 
+
+
 Pantalon::~Pantalon()
 {
 }
-
-
 
 std::string Pantalon::MostrarTipoDePrenda()
 {

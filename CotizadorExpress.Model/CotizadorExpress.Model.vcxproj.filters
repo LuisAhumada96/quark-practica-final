@@ -7,6 +7,10 @@
     <ClInclude Include="Entities\Cotizacion\Cotizacion.h" />
     <ClInclude Include="Entities\Pantalon\Pantalon.h" />
     <ClInclude Include="Entities\Camisa\Camisa.h" />
+    <ClInclude Include="Strategies\Factories\CotizacionStrategyFactory.h" />
+    <ClInclude Include="Strategies\Prendas\PrendaCotizacionStrategy.h" />
+    <ClInclude Include="Strategies\Prendas\PantalonCotizacionStrategy.h" />
+    <ClInclude Include="Strategies\Prendas\CamisaCotizacionStrategy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entities\Vendedor\Vendedor.cpp" />
@@ -15,5 +19,9 @@
     <ClCompile Include="Entities\Cotizacion\Cotizacion.cpp" />
     <ClCompile Include="Entities\Pantalon\Pantalon.cpp" />
     <ClCompile Include="Entities\Camisa\Camisa.cpp" />
+    <ClCompile Include="Strategies\Factories\CotizacionStrategyFactory.cpp" />
+    <ClCompile Include="Strategies\Prendas\PantalonCotizacionStrategy.cpp" />
+    <ClCompile Include="Strategies\Prendas\CamisaCotizacionStrategy.cpp" />
+    <ClCompile Include="Strategies\Prendas\PrendaCotizacionStrategy.cpp" />
   </ItemGroup>
 </Project>
