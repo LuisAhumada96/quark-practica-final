@@ -12,6 +12,6 @@ private:
 
 
 	// Heredado vía Prenda
-	virtual char* MostrarTipoDePrenda() override;
+	virtual std::string MostrarTipoDePrenda() override;
 
 };

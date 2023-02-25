@@ -6,5 +6,5 @@ Prenda::~Prenda()
 
 double Prenda::GetPrecioUnitario()
 {
-	return 0.0;
+	return this->m_precioUnitario;
 }

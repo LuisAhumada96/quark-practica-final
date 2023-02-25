@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Entities\Camisa\Camisa.h" />
     <ClInclude Include="Entities\Cotizacion\Cotizacion.h" />
+    <ClInclude Include="Entities\Pantalon\Pantalon.h" />
     <ClInclude Include="Entities\Vendedor\Vendedor.h" />
     <ClInclude Include="Entities\Prenda\Prenda.h" />
     <ClInclude Include="Entities\Tienda\Tienda.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Entities\Camisa\Camisa.cpp" />
     <ClCompile Include="Entities\Cotizacion\Cotizacion.cpp" />
+    <ClCompile Include="Entities\Pantalon\Pantalon.cpp" />
     <ClCompile Include="Entities\Vendedor\Vendedor.cpp" />
     <ClCompile Include="Entities\Prenda\Prenda.cpp" />
     <ClCompile Include="Entities\Tienda\Tienda.cpp" />

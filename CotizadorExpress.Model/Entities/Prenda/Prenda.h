@@ -2,6 +2,8 @@
 
 
 
+#include <string>
+
 enum Calidad {Standard, Premium};
 
 class Prenda
@@ -15,7 +17,7 @@ public:
 	Prenda(Calidad calidad, double precioUnitario, int unidadesStock) :m_calidad(calidad), m_precioUnitario(precioUnitario), m_unidadesStock(unidadesStock){}
 	virtual ~Prenda();
 	double GetPrecioUnitario();
-	virtual char* MostrarTipoDePrenda() = 0;
+	virtual std::string MostrarTipoDePrenda() = 0;
 
 };
 
