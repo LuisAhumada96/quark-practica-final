@@ -1,35 +1,26 @@
 #pragma once
 
-#include "IView.h"
-#include "MainPresenter.h"
+#include "../src/Interfaces/IView.h"
 #include <iostream>
 
 
-
-
+class Presentador;
 class MainView :public IView
 {
 private:
-	MainPresenter* presenter;
+	Presentador* m_presentador;
 public:
 	MainView();
 	~MainView();
 
-	virtual void showMessage(const char* message) override;
+	// Heredado vía IView
 
+	void MostrarMenuPrincipal();
+
+	// Heredado vía IView
+	 void MostrarTexto(const char* texto) override;
+	 void MostrarTexto(const std::string& texto) override;
 };
 
-MainView::MainView()
-{
-	this->presenter = new MainPresenter(this);
-}
 
-MainView::~MainView()
-{
-}
-
-void MainView::showMessage(const char* message)
-{
-
-}
 #pragma once

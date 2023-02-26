@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src;$(SolutionDir)CotizadorExpress.Presenter\src\Interfaces;$(SolutionDir)CotizadorExpress.Presenter\src\Presenters</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src;$(SolutionDir)CotizadorExpress.Presenter\src\Interfaces;$(SolutionDir)CotizadorExpress.Presenter\src\Presenters</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src;$(SolutionDir)CotizadorExpress.Presenter\src\Interfaces;$(SolutionDir)CotizadorExpress.Presenter\src\Presenters</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src;$(SolutionDir)CotizadorExpress.Presenter\src\Interfaces;$(SolutionDir)CotizadorExpress.Presenter\src\Presenters</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)CotizadorExpress.Presenter\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,9 +132,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Views\MainView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\MainView.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CotizadorExpress.Presenter\CotizadorExpress.Presenter.vcxproj">
+      <Project>{e6c9067b-f9cf-4982-a3a6-a0bdda88ff75}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

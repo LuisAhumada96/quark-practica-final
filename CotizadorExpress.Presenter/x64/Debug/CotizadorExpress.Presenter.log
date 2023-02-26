@@ -1,2 +1,5 @@
-﻿  MainPresenter.cpp
-  CotizadorExpress.Presenter.vcxproj -> D:\Luis\Quark Academy\Desafio Final\quark-practica-final\x64\Debug\CotizadorExpress.Presenter.lib
+﻿  Presentador.cpp
+F:\Luis\Quark Academy\6- Desafio Final\quark-practica-final\CotizadorExpress.Presenter\src\Presentador.cpp(7,116): error C2027: uso del tipo 'Tienda' sin definir
+F:\Luis\Quark Academy\6- Desafio Final\quark-practica-final\CotizadorExpress.Model\src\Entities\Vendedor\Vendedor.h(6,7): message : vea la declaración de 'Tienda'
+F:\Luis\Quark Academy\6- Desafio Final\quark-practica-final\CotizadorExpress.Presenter\src\Presentador.cpp(7,33): error C2661: 'Vendedor::Vendedor': ninguna función sobrecargada acepta 3 argumentos
+F:\Luis\Quark Academy\6- Desafio Final\quark-practica-final\CotizadorExpress.Presenter\src\Presentador.cpp(7,33): message : al hacer coincidir la lista de argumentos '(int, const char [5], const char [10])'

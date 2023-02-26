@@ -2,9 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="src\Interfaces\IView.h" />
-    <ClInclude Include="src\Presenters\MainPresenter.h" />
+    <ClInclude Include="src\Presentador.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Presenters\MainPresenter.cpp" />
+    <ClCompile Include="src\Presentador.cpp" />
   </ItemGroup>
 </Project>
