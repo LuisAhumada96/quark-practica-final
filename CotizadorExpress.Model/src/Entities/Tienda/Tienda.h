@@ -1,6 +1,8 @@
 #pragma once
 #include <list>
 #include "../Prenda/Prenda.h"
+
+
 class Tienda
 {
 private:
@@ -11,5 +13,8 @@ public:
 	Tienda(std::string nombre, std::string direccion);
 	~Tienda();
 	Prenda* BuscarPrenda(char* nombre);
+	std::string GetNombre();
+	std::string GetDireccion();
 };
+
 

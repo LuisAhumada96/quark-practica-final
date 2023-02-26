@@ -18,8 +18,8 @@ public:
 	void MostrarMenuPrincipal();
 
 	// Heredado vía IView
-	 void MostrarTexto(const char* texto) override;
-	 void MostrarTexto(const std::string& texto) override;
+	 void MostrarTexto(const char* texto, bool justified = false) override;
+	 void MostrarTexto(const std::string& texto, bool justified = false) override;
 };
 
 

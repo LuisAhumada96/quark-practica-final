@@ -137,6 +137,11 @@
   <ItemGroup>
     <ClCompile Include="src\Presentador.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CotizadorExpress.Model\CotizadorExpress.Model.vcxproj">
+      <Project>{b024c1ae-17c2-47b6-9629-83c1242583d7}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

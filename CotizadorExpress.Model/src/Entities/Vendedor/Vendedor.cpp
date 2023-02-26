@@ -1,6 +1,6 @@
 #include "Vendedor.h"
 
-
+#include "../Tienda/Tienda.h"
 
 Vendedor::~Vendedor()
 {

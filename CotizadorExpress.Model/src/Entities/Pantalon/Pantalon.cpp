@@ -10,7 +10,7 @@ Pantalon::~Pantalon()
 
 std::string Pantalon::MostrarTipoDePrenda()
 {
-	std::string tipo = Prenda::MostrarTipoDePrenda();
-	tipo.append(' ' + this->m_nombre + ' ' + std::to_string(this->m_pantalonTipo));
+	std::string tipo;
+	tipo.append(this->m_nombre + ' ' + std::to_string(this->m_pantalonTipo));
 	return tipo;
 }

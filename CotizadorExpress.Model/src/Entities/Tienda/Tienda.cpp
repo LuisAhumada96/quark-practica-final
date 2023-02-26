@@ -33,3 +33,11 @@ Prenda* Tienda::BuscarPrenda(char* nombre)
 {
 	return nullptr;
 }
+std::string Tienda::GetNombre()
+{
+	return this->m_nombre;
+}
+std::string Tienda::GetDireccion()
+{
+	return this->m_direccion;
+}
