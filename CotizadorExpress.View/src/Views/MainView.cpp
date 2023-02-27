@@ -150,6 +150,16 @@ void MainView::SeleccionarPrenda(const char* opcion, bool& esOpcionValida) {
 }
 
 
+void MainView::SolicitarDatoDeCotizacion(std::string& valor,std::string &mensaje, std::map<std::string, std::string>& opciones)
+{
+	std::system("cls");
+	MostrarTexto(HEADER_COTIZACION);
+	MostrarTexto("-----------------------------------------------------");
+	MostrarTexto(RETURN_MENU_PRINCIPAL);
+	MostrarTexto("-----------------------------------------------------");
+	MostrarTexto(mensaje);
+	SetValor(valor, opciones);
+}
 
 void MainView::SetValor(std::string& valor, std::map<std::string, std::string>& opciones)
 {
@@ -177,18 +187,6 @@ void MainView::SetValor(std::string& valor, std::map<std::string, std::string>& 
 
 	} while (!esValido);
 }
-
-void MainView::SolicitarDatoDeCotizacion(std::string& valor,std::string &mensaje, std::map<std::string, std::string>& opciones)
-{
-	std::system("cls");
-	MostrarTexto(HEADER_COTIZACION);
-	MostrarTexto("-----------------------------------------------------");
-	MostrarTexto(RETURN_MENU_PRINCIPAL);
-	MostrarTexto("-----------------------------------------------------");
-	MostrarTexto(mensaje);
-	SetValor(valor, opciones);
-}
-
 
 
 
