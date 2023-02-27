@@ -24,7 +24,7 @@ public:
 
 	// Heredado vía Prenda
 	virtual std::string GetNombreDePrenda() override;
-
+	bool DescripcionCoincide(Prenda* prenda) override;
 };
 
 

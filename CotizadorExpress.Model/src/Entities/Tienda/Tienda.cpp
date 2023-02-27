@@ -29,9 +29,16 @@ Tienda::~Tienda()
 
 }
 
-Prenda* Tienda::BuscarPrenda(char* nombre)
+Prenda* Tienda::BuscarPrenda(std::string nombre)
 {
-	return nullptr;
+	Prenda* prenda = nullptr;
+	for (auto& p : l_prendasStock)
+	{
+		if (p->GetNombreDePrenda() == nombre) {
+
+		}
+	}
+
 }
 std::string Tienda::GetNombre()
 {

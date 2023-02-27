@@ -16,6 +16,14 @@ std::map<int,std::string> PrendaFactory::GetPrendasTipos()
     };
 }
 
+std::map<std::string, std::string> PrendaFactory::GetPrendasCalidad()
+{
+    return std::map<std::string, std::string> {
+        { "1", "Standard"},
+        { "2", "Premium" }
+    };
+}
+
 Prenda* PrendaFactory::GetPrenda(int tipoPrenda)
 {
     auto prendas = GetPrendasTipos();
@@ -24,3 +32,4 @@ Prenda* PrendaFactory::GetPrenda(int tipoPrenda)
     if (prenda == "Camisa") return new Camisa();
     if (prenda == "Pantalon") return new Pantalon();
 }
+

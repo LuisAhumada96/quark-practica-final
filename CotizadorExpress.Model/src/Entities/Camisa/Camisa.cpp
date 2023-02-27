@@ -25,3 +25,8 @@ std::string Camisa::GetNombreDePrenda()
 {
 	return "Camisa";
 }
+
+bool Camisa::DescripcionCoincide(Prenda* prenda)
+{
+	return false;
+}

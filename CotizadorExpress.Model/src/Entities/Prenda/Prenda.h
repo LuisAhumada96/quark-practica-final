@@ -4,7 +4,7 @@
 
 #include <string>
 
-enum Calidad {Standard, Premium};
+enum Calidad {Standard = 1, Premium};
 
 class Prenda
 {
@@ -22,7 +22,7 @@ public:
 	
 	Calidad getCalidad();
 	void setCalidad(Calidad calidad);
-	
+	virtual bool DescripcionCoincide(Prenda* prenda) = 0;
 	virtual std::string GetCaracteristicasDePrenda() = 0;
 	virtual std::string GetNombreDePrenda() =0;
 

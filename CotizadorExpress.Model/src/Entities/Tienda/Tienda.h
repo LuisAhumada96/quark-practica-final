@@ -13,7 +13,7 @@ private:
 public:
 	Tienda(std::string nombre, std::string direccion);
 	~Tienda();
-	Prenda* BuscarPrenda(char* nombre);
+	Prenda* BuscarPrenda(std::string nombre);
 	std::string GetNombre();
 	std::string GetDireccion();
 	std::list<PrendaCotizacionStrategy*> GetPoliticasDeCotizacion();

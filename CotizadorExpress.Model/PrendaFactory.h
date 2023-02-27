@@ -9,6 +9,7 @@ public:
 	PrendaFactory();
 	~PrendaFactory() = default;
 	static std::map<int, std::string> GetPrendasTipos();
+	static std::map<std::string, std::string> GetPrendasCalidad();
 	static Prenda* GetPrenda(int tipoPrenda);
 	
 };

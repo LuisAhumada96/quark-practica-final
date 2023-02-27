@@ -21,6 +21,12 @@ void Presentador::GetItemsMenuDePrendas()
 	m_view->SetMenuPrendaItems(items);
 }
 
+std::map<std::string, std::string> Presentador::GetItemsCalidad()
+{
+	auto items = PrendaFactory::GetPrendasCalidad();
+	return items;
+}
+
 void Presentador::MostrarDatosDeTienda()
 {
 	Tienda* tienda = this->m_vendedor->GetTienda();
@@ -66,7 +72,6 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 
 		camisa->SetTipoCuello(static_cast<TipoCuello>(cuelloInt));
 
-
 	}
 	case (int)TipoPrenda::Pantalon:
 	{
@@ -79,4 +84,17 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 	}
 }
 
+void Presentador::SetCalidadDePrendaCotizada(std::string calidad) {
 
+	int calidadInt = std::stoi(calidad);
+	m_prendaCotizada->setCalidad(static_cast<Calidad>(calidadInt));
+}
+
+void Presentador::SetPrecioDePrenda(double valor) {
+	m_prendaCotizada->SetPrecioUnitario(valor);
+}
+void Presentador::BuscarCantidadDePrendaACotizar() {
+	auto tienda = m_vendedor->GetTienda();
+
+	tienda->BuscarPrenda(m_prendaCotizada->GetNombreDePrenda());
+}
