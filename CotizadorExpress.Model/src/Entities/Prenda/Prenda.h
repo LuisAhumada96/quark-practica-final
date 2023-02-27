@@ -12,13 +12,19 @@ private:
 	Calidad m_calidad;
 	double m_precioUnitario;
 	int m_unidadesStock;
-
 public:
-	Prenda(Calidad calidad, double precioUnitario, int unidadesStock) :m_calidad(calidad), m_precioUnitario(precioUnitario), m_unidadesStock(unidadesStock){}
+	Prenda();
+	Prenda(Calidad calidad, int unidadesStock) :m_calidad(calidad), m_unidadesStock(unidadesStock){}
 	virtual ~Prenda();
+	
 	double GetPrecioUnitario();
+	void SetPrecioUnitario(double precioUnitario);	
+	
 	Calidad getCalidad();
-	virtual std::string MostrarTipoDePrenda() = 0;
+	void setCalidad(Calidad calidad);
+	
+	virtual std::string GetCaracteristicasDePrenda() = 0;
+	virtual std::string GetNombreDePrenda() =0;
 
 };
 

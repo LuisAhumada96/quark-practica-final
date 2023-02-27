@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include "../Prenda/Prenda.h"
+#include "../../Strategies/Prendas/PrendaCotizacionStrategy.h"
 
 
 class Tienda
@@ -15,6 +16,7 @@ public:
 	Prenda* BuscarPrenda(char* nombre);
 	std::string GetNombre();
 	std::string GetDireccion();
+	std::list<PrendaCotizacionStrategy*> GetPoliticasDeCotizacion();
 };
 
 

@@ -12,11 +12,20 @@ class Camisa:public Prenda
 private:
 	TipoCuello m_tipoCuello;
 	TipoManga m_tipoManga;
+	const char* m_nombre = "Camisa";
 public:
-	Camisa(Calidad calidad, double precioUnitario, int unidadesStock, TipoCuello tipoCuello, TipoManga tipoManga) :Prenda(calidad, precioUnitario, unidadesStock),
-																												  m_tipoCuello(tipoCuello), m_tipoManga(tipoManga){};
+	Camisa();
+	Camisa(Calidad calidad, int unidadesStock, TipoCuello tipoCuello, TipoManga tipoManga) :Prenda(calidad, unidadesStock),
+																						    m_tipoCuello(tipoCuello), m_tipoManga(tipoManga){};
 	~Camisa();
-	virtual std::string MostrarTipoDePrenda() override;
+	void SetTipoCuello(TipoCuello tipoCuello);
+	void setTipoManga(TipoManga tipoManga);
+
+	virtual std::string GetCaracteristicasDePrenda() override;
+
+
+	// Heredado vía Prenda
+	virtual std::string GetNombreDePrenda() override;
 
 };
 

@@ -14,12 +14,16 @@ private:
 	PantalonTipo m_pantalonTipo;
 
 public:
-	Pantalon(Calidad calidad, double precioUnitario, int unidadesStock,PantalonTipo pantalonTipo) :Prenda(calidad, precioUnitario, unidadesStock), 
-																								   m_pantalonTipo(pantalonTipo) {};
+	Pantalon();
+	Pantalon(Calidad calidad, int unidadesStock,PantalonTipo pantalonTipo) :Prenda(calidad, unidadesStock), m_pantalonTipo(pantalonTipo) {};
 	~Pantalon();
 
 	// Heredado vía Prenda
-	virtual std::string MostrarTipoDePrenda() override;
+	virtual std::string GetCaracteristicasDePrenda() override;
+
+
+	// Heredado vía Prenda
+	virtual std::string GetNombreDePrenda() override;
 
 };
 

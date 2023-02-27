@@ -127,9 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="PrendaFactory.h" />
     <ClInclude Include="src\Strategies\Prendas\CamisaCotizacionStrategy.h" />
     <ClInclude Include="src\Strategies\Prendas\PantalonCotizacionStrategy.h" />
-    <ClInclude Include="src\Strategies\Factories\CotizacionStrategyFactory.h" />
+    <ClInclude Include="src\Strategies\Factory\CotizacionStrategyFactory.h" />
     <ClInclude Include="src\Entities\Camisa\Camisa.h" />
     <ClInclude Include="src\Entities\Cotizacion\Cotizacion.h" />
     <ClInclude Include="src\Entities\Pantalon\Pantalon.h" />
@@ -139,10 +140,11 @@
     <ClInclude Include="src\Strategies\Prendas\PrendaCotizacionStrategy.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="PrendaFactory.cpp" />
     <ClCompile Include="src\Strategies\Prendas\CamisaCotizacionStrategy.cpp" />
     <ClCompile Include="src\Strategies\Prendas\PrendaCotizacionStrategy.cpp" />
     <ClCompile Include="src\Strategies\Prendas\PantalonCotizacionStrategy.cpp" />
-    <ClCompile Include="src\Strategies\Factories\CotizacionStrategyFactory.cpp" />
+    <ClCompile Include="src\Strategies\Factory\CotizacionStrategyFactory.cpp" />
     <ClCompile Include="src\Entities\Camisa\Camisa.cpp" />
     <ClCompile Include="src\Entities\Cotizacion\Cotizacion.cpp" />
     <ClCompile Include="src\Entities\Pantalon\Pantalon.cpp" />

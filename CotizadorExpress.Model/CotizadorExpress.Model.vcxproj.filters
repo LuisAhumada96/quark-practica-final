@@ -7,10 +7,11 @@
     <ClInclude Include="src\Entities\Cotizacion\Cotizacion.h" />
     <ClInclude Include="src\Entities\Pantalon\Pantalon.h" />
     <ClInclude Include="src\Entities\Camisa\Camisa.h" />
-    <ClInclude Include="src\Strategies\Factories\CotizacionStrategyFactory.h" />
+    <ClInclude Include="src\Strategies\Factory\CotizacionStrategyFactory.h" />
     <ClInclude Include="src\Strategies\Prendas\PrendaCotizacionStrategy.h" />
     <ClInclude Include="src\Strategies\Prendas\PantalonCotizacionStrategy.h" />
     <ClInclude Include="src\Strategies\Prendas\CamisaCotizacionStrategy.h" />
+    <ClInclude Include="PrendaFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Entities\Vendedor\Vendedor.cpp" />
@@ -19,9 +20,10 @@
     <ClCompile Include="src\Entities\Cotizacion\Cotizacion.cpp" />
     <ClCompile Include="src\Entities\Pantalon\Pantalon.cpp" />
     <ClCompile Include="src\Entities\Camisa\Camisa.cpp" />
-    <ClCompile Include="src\Strategies\Factories\CotizacionStrategyFactory.cpp" />
+    <ClCompile Include="src\Strategies\Factory\CotizacionStrategyFactory.cpp" />
     <ClCompile Include="src\Strategies\Prendas\PantalonCotizacionStrategy.cpp" />
     <ClCompile Include="src\Strategies\Prendas\CamisaCotizacionStrategy.cpp" />
     <ClCompile Include="src\Strategies\Prendas\PrendaCotizacionStrategy.cpp" />
+    <ClCompile Include="PrendaFactory.cpp" />
   </ItemGroup>
 </Project>

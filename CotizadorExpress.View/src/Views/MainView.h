@@ -2,6 +2,7 @@
 
 #include "../src/Interfaces/IView.h"
 #include <iostream>
+#include <map>
 
 
 class Presentador;
@@ -9,17 +10,23 @@ class MainView :public IView
 {
 private:
 	Presentador* m_presentador;
+	std::map<int,std::string> m_menuPrendasItems;
+	void MostrarMenuPrincipal();
+	void MostrarMenuPrendas();
+	void EjecutarOpcion(const char* opcion, bool& haSalido);
+	void RegresarAMenuPrincipal();
 public:
 	MainView();
 	~MainView();
 
 	// Heredado vía IView
-
-	void MostrarMenuPrincipal();
-
-	// Heredado vía IView
-	 void MostrarTexto(const char* texto, bool justified = false) override;
-	 void MostrarTexto(const std::string& texto, bool justified = false) override;
+	 void MostrarTexto(const char* texto) override;
+	 void MostrarTexto(const std::string& texto) override;
+	 void SetMenuPrendaItems(std::map<int,std::string> items) override;
+	 void SolicitarDatoDeCotizacion(std::string& valor, std::string& mensaje, std::map<std::string, std::string>& opciones) override;
+	 void SetValor(std::string& valor, std::map<std::string, std::string>& opciones) override;
+	 
+	 void SeleccionarPrenda(const char* opcion, bool& esOpcionValida);
 };
 
 
