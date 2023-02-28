@@ -6,6 +6,7 @@
 
 class Tienda;
 class Cotizacion;
+class PrendaCotizacionStrategy;
 class Vendedor
 {
 private:
@@ -21,11 +22,11 @@ public:
 																						  m_apellido(apellido),
 																					      m_tienda(tienda) {}
 	~Vendedor();
-	void realizarCotizacion();
 	std::string GetNombre();
 	std::string GetApellido();
 	int GetCodigo();
 	Tienda* GetTienda();
+	Cotizacion* RealizarCotizacion(Prenda* prenda, int cantidadCotizada, std::string fechaCotizada);
 
 };
 

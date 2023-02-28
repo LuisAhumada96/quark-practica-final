@@ -3,6 +3,7 @@
 #include "../Entities/Vendedor/Vendedor.h"
 #include "Tienda/Tienda.h"
 #include "Camisa/Camisa.h"
+#include "Cotizacion/Cotizacion.h"
 #include "../../CotizadorExpress.Model/PrendaFactory.h"
 
 Presentador::Presentador(IView* view) :m_view(view)
@@ -53,7 +54,7 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 		Camisa* camisa = dynamic_cast<Camisa*>(m_prendaCotizada);
 		
 		std::string input = "";
-		std::string paso = "Paso 2.a: La camisa a cotizar, ¿Es Manga Corta?";
+		std::string paso = "PASO 2.a: La camisa a cotizar, ¿Es Manga Corta?";
 
 		std::map<std::string, std::string> opciones = std::map<std::string, std::string>{ {"1","Si"},{"2","No"} };
 		
@@ -64,7 +65,7 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 
 		camisa->setTipoManga(static_cast<TipoManga>(mangaInt));
 
-		paso = "Paso 2.b: La camisa a cotizar, ¿Es Cuello Mao?";
+		paso = "PASO 2.b: La camisa a cotizar, ¿Es Cuello Mao?";
 
 		m_view->SolicitarDatoDeCotizacion(input, paso, opciones);
 		m_view->MostrarTexto("");
@@ -87,14 +88,42 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 void Presentador::SetCalidadDePrendaCotizada(std::string calidad) {
 
 	int calidadInt = std::stoi(calidad);
-	m_prendaCotizada->setCalidad(static_cast<Calidad>(calidadInt));
+	m_prendaCotizada->SetCalidad(static_cast<Calidad>(calidadInt));
 }
 
 void Presentador::SetPrecioDePrenda(double valor) {
 	m_prendaCotizada->SetPrecioUnitario(valor);
 }
-void Presentador::BuscarCantidadDePrendaACotizar() {
-	auto tienda = m_vendedor->GetTienda();
 
-	tienda->BuscarPrenda(m_prendaCotizada->GetNombreDePrenda());
+void Presentador::BuscarStockDePrendaACotizar() {
+	
+	auto tienda = m_vendedor->GetTienda();
+	auto prendaEnExistencia = tienda->BuscarPrenda(m_prendaCotizada);
+
+	if (prendaEnExistencia == nullptr) {
+		m_view->MostrarTexto("No se encontró la prenda que buscaba");
+		return;
+
+	}
+	m_prendaCotizada = prendaEnExistencia;
+
+	m_view->MostrarTexto("Existe " + std::to_string(prendaEnExistencia->GetStockDisponible()) + " de la prenda seleccionada");
+}
+
+void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
+{
+	if (cantidad > m_prendaCotizada->GetStockDisponible()) {
+		m_view->MostrarTexto("La cantidad ingresada supera al stock disponible. Por favor ingrese una cantidad menor o igual al stock actual");
+		stockValido = false;
+		return;
+	}
+	else {
+		m_cantidadCotizada = cantidad;
+		stockValido = true;
+	}
+}
+void Presentador::IniciarCotizacion() {
+
+	auto cotizacion = m_vendedor->RealizarCotizacion(m_prendaCotizada,m_cantidadCotizada,"");
+
 }

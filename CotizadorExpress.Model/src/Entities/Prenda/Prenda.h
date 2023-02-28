@@ -10,7 +10,7 @@ class Prenda
 {
 private:
 	Calidad m_calidad;
-	double m_precioUnitario;
+	double m_precioUnitario = 0;
 	int m_unidadesStock;
 public:
 	Prenda();
@@ -20,11 +20,13 @@ public:
 	double GetPrecioUnitario();
 	void SetPrecioUnitario(double precioUnitario);	
 	
-	Calidad getCalidad();
-	void setCalidad(Calidad calidad);
-	virtual bool DescripcionCoincide(Prenda* prenda) = 0;
+	void SetCalidad(Calidad calidad);
+	Calidad GetCalidad();
+	int GetStockDisponible();
+	
+	virtual bool DescripcionCoincide(Prenda* prenda);
 	virtual std::string GetCaracteristicasDePrenda() = 0;
-	virtual std::string GetNombreDePrenda() =0;
+	virtual std::string GetNombreDePrenda() = 0;
 
 };
 

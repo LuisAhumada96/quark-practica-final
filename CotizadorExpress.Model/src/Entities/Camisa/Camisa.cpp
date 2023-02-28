@@ -23,10 +23,20 @@ std::string Camisa::GetCaracteristicasDePrenda()
 
 std::string Camisa::GetNombreDePrenda()
 {
-	return "Camisa";
+	return  m_nombre;
 }
 
 bool Camisa::DescripcionCoincide(Prenda* prenda)
 {
-	return false;
+	bool base = Prenda::DescripcionCoincide(prenda);
+	if (!base) return false;
+
+	auto camisa = dynamic_cast<Camisa*>(prenda);
+
+	if (camisa == nullptr) return false;
+
+	if (this->m_tipoCuello != camisa->m_tipoCuello) return false;
+	if (this->m_tipoManga != camisa->m_tipoManga) return false;
+
+	return true;
 }

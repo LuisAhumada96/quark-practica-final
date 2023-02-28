@@ -1,9 +1,8 @@
 #pragma once
 #include <list>
 #include "../Prenda/Prenda.h"
-#include "../../Strategies/Prendas/PrendaCotizacionStrategy.h"
 
-
+class PrendaCotizacionStrategy;
 class Tienda
 {
 private:
@@ -13,10 +12,10 @@ private:
 public:
 	Tienda(std::string nombre, std::string direccion);
 	~Tienda();
-	Prenda* BuscarPrenda(std::string nombre);
+	Prenda* BuscarPrenda(Prenda* prenda);
 	std::string GetNombre();
 	std::string GetDireccion();
-	std::list<PrendaCotizacionStrategy*> GetPoliticasDeCotizacion();
+	PrendaCotizacionStrategy* GetPoliticaDeCotizacion(std::string nombreDePrenda);
 };
 
 

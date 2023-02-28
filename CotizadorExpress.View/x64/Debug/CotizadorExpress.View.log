@@ -1,3 +1,3 @@
 ﻿  MainView.cpp
-F:\Luis\Quark Academy\6- Desafio Final\quark-practica-final\CotizadorExpress.View\src\Views\MainView.cpp(109,3): warning C4102: 'std': etiqueta sin referencia
-  CotizadorExpress.View.vcxproj -> F:\Luis\Quark Academy\6- Desafio Final\quark-practica-final\x64\Debug\CotizadorExpress.View.exe
+D:\Luis\Quark Academy\Desafio Final\quark-practica-final\CotizadorExpress.View\src\Views\MainView.cpp(109,5): warning C4102: 'std': etiqueta sin referencia
+  CotizadorExpress.View.vcxproj -> D:\Luis\Quark Academy\Desafio Final\quark-practica-final\x64\Debug\CotizadorExpress.View.exe

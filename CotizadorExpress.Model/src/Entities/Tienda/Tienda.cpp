@@ -2,6 +2,9 @@
 
 #include "../Camisa/Camisa.h"
 #include "../Pantalon/Pantalon.h"
+#include "../../Strategies/Factory/CotizacionStrategyFactory.h"
+#include "../../Strategies/Prendas/PrendaCotizacionStrategy.h"
+
 
 Tienda::Tienda(std::string nombre, std::string direccion) :m_nombre(nombre), m_direccion(direccion)
 {
@@ -29,16 +32,13 @@ Tienda::~Tienda()
 
 }
 
-Prenda* Tienda::BuscarPrenda(std::string nombre)
+Prenda* Tienda::BuscarPrenda(Prenda* prenda)
 {
-	Prenda* prenda = nullptr;
 	for (auto& p : l_prendasStock)
 	{
-		if (p->GetNombreDePrenda() == nombre) {
-
-		}
+		if (p->DescripcionCoincide(prenda)) return p;
 	}
-
+	return nullptr;
 }
 std::string Tienda::GetNombre()
 {
@@ -49,7 +49,7 @@ std::string Tienda::GetDireccion()
 	return this->m_direccion;
 }
 
-//std::list<PrendaCotizacionStrategy> Tienda::GetPoliticasDeCotizacion()
-//{
-//	return std::list<PrendaCotizacionStrategy>{};
-//}
+PrendaCotizacionStrategy* Tienda::GetPoliticaDeCotizacion(std::string nombreDePrenda)
+{
+	return CotizacionStrategyFactory::GetStrategy(nombreDePrenda);
+}

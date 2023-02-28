@@ -12,7 +12,7 @@ const std::string PantalonCotizacionStrategy::GetStrategyType()
 
 double PantalonCotizacionStrategy::CotizarPrenda(Prenda* prenda)
 {
-    auto total = PrendaCotizacionStrategy::CotizarPrenda(prenda);
+    auto total = prenda->GetPrecioUnitario();
     auto pantalon = dynamic_cast<Pantalon*>(prenda);
     
     if (pantalon->m_pantalonTipo == Chupin) {

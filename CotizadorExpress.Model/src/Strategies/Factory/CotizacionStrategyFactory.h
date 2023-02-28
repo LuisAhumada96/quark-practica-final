@@ -1,17 +1,17 @@
 #pragma once
 
-#include "../Prendas/PrendaCotizacionStrategy.h"
 
 #include <list>
+#include <string>
 
 enum class PrendaTipo{Camisa,Pantalon};
 
+class PrendaCotizacionStrategy;
 class CotizacionStrategyFactory
 {
 public:
 	CotizacionStrategyFactory();
 	~CotizacionStrategyFactory() = default;
 	static PrendaCotizacionStrategy* GetStrategy(std::string prenda);
-	static std::list<std::string> GetPrendasCategorias();
 };
 

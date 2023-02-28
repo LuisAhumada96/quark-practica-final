@@ -1,4 +1,5 @@
 #include "CotizacionStrategyFactory.h"
+#include "../../Strategies/Prendas/PrendaCotizacionStrategy.h"
 #include "../Prendas/PantalonCotizacionStrategy.h"
 #include "../Prendas/CamisaCotizacionStrategy.h"
 CotizacionStrategyFactory::CotizacionStrategyFactory()

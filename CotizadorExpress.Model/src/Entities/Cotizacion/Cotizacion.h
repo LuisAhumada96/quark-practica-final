@@ -2,7 +2,6 @@
 
 #include <string>
 class Prenda;
-
 class Cotizacion
 {
 private:
@@ -10,14 +9,15 @@ private:
 	std::string m_fechaCotizada;
 	int m_codigoVendedor;
 	Prenda* m_prendaCotizada;
-	int m_cantidadCotizadas;
-	double resultadoCotizacion = 0;
+	int m_unidadesCotizadas;
+	double m_resultadoCotizacion = 0;
 public:
-	Cotizacion(int id, int codigoVendedor, Prenda* prenda, int cantidadCotizada, std::string fechaCotizada):m_id(id),
+	Cotizacion(int id, int codigoVendedor, Prenda* prenda, int cantidadCotizada, std::string fechaCotizada, double resultadoCotizacion):m_id(id),
 																				m_codigoVendedor(codigoVendedor),
 																				m_prendaCotizada(prenda),
-																				m_cantidadCotizadas(cantidadCotizada),
-																				m_fechaCotizada(fechaCotizada) {}
+																				m_unidadesCotizadas(cantidadCotizada),
+																				m_fechaCotizada(fechaCotizada),
+																				m_resultadoCotizacion(resultadoCotizacion){}
 	~Cotizacion();
 };
 

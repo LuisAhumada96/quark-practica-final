@@ -26,9 +26,9 @@ std::string Pantalon::GetNombreDePrenda()
 
 bool Pantalon::DescripcionCoincide(Prenda* prenda)
 {
-	if (prenda->GetNombreDePrenda() != this->GetNombreDePrenda()) return false;
-	if ((this->getCalidad() != prenda->getCalidad())) return false;
-	
+	bool base = Prenda::DescripcionCoincide(prenda);
+	if (!base) return false;
+
 	auto pantalon = dynamic_cast<Pantalon*>(prenda);
 	
 	if (pantalon == nullptr) return false;

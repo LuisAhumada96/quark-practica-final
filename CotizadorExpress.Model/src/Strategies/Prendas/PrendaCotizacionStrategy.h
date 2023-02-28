@@ -3,7 +3,6 @@
 #include "../../Entities/Prenda/Prenda.h"
 
 
-
 class PrendaCotizacionStrategy
 {
 private:
