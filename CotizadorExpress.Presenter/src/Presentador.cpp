@@ -6,6 +6,11 @@
 #include "Cotizacion/Cotizacion.h"
 #include "../../CotizadorExpress.Model/PrendaFactory.h"
 
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <sstream>
+
 Presentador::Presentador(IView* view) :m_view(view)
 {
 	this->m_vendedor = new Vendedor(1, "Juan", "Campanaso", new Tienda("Quark Gear Store", "Avenida Siempre Viva 500"));
@@ -107,7 +112,10 @@ void Presentador::BuscarStockDePrendaACotizar() {
 	}
 	m_prendaCotizada = prendaEnExistencia;
 
-	m_view->MostrarTexto("Existe " + std::to_string(prendaEnExistencia->GetStockDisponible()) + " de la prenda seleccionada");
+	m_view->MostrarTexto("");
+	m_view->MostrarTexto("INFORMACIÓN:");
+	m_view->MostrarTexto("EXISTE " + std::to_string(prendaEnExistencia->GetStockDisponible()) + "CANTIDAD DE UNIDADES EN STOCK DE LA PRENDA SELECCIONADA");
+	m_view->MostrarTexto("");
 }
 
 void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
@@ -123,7 +131,14 @@ void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
 	}
 }
 void Presentador::IniciarCotizacion() {
+	
+	char buffer[80];
+	time_t rawtime = time(nullptr);
+	struct tm timeinfo;
+	localtime_s(&timeinfo, &rawtime);
 
-	auto cotizacion = m_vendedor->RealizarCotizacion(m_prendaCotizada,m_cantidadCotizada,"");
+	struct tm* timeinfoPtr = &timeinfo;
+	strftime(buffer, sizeof(buffer), "%d-%m-%Y %H:%M:%S", timeinfoPtr);
+	auto cotizacion = m_vendedor->RealizarCotizacion(m_prendaCotizada, m_cantidadCotizada,buffer);
 
 }

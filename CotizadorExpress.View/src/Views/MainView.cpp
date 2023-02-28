@@ -194,8 +194,8 @@ void MainView::IngresarCantidadACotizar()
 		MostrarTexto("-----------------------------------------------------");
 		try
 		{
-			MostrarTexto("PASO 5: Ingrese la cantidad de unidades a cotizar");
 			m_presentador->BuscarStockDePrendaACotizar();
+			MostrarTexto("PASO 5: Ingrese la cantidad de unidades a cotizar");
 			std::cin >> valor;
 			m_presentador->ReservarStockDePrenda(valor, esValido);
 		}
