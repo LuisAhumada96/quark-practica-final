@@ -1,5 +1,4 @@
 #include "Camisa.h"
-
 Camisa::Camisa()
 {
 
@@ -18,7 +17,13 @@ void Camisa::setTipoManga(TipoManga tipoManga) {
 
 std::string Camisa::GetCaracteristicasDePrenda()
 {
-	return "";
+	std::string valor = "";
+	valor.append(this->m_nombre);
+	valor.append(" - ");
+	valor.append(this->m_tipoManga == TipoManga::Corta ? "Corta" : "Larga");
+	valor.append(" - ");
+	valor.append(this->m_tipoCuello == TipoCuello::Comun ? "Común" : "Mao");
+	return valor;
 }
 
 std::string Camisa::GetNombreDePrenda()

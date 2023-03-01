@@ -11,10 +11,15 @@ Cotizacion* Vendedor::RealizarCotizacion(Prenda *prenda,int cantidadCotizada, st
 
 	auto nombre = prenda->GetNombreDePrenda();
 	auto estrategiaDeCotizacion = this->m_tienda->GetPoliticaDeCotizacion(nombre);
-	auto resultado = estrategiaDeCotizacion->CotizarPrenda(prenda);
+	auto precioUnitarioCotizado = estrategiaDeCotizacion->CotizarPrenda(prenda);
+
+	double total = precioUnitarioCotizado * cantidadCotizada;
 
 	int id = static_cast<int>(l_cotizaciones.size());
-	Cotizacion* cotizacion = new Cotizacion(id, this->m_codigoVendedor, prenda, cantidadCotizada, fechaCotizada, 0);
+	Cotizacion* cotizacion = new Cotizacion(id, this->m_codigoVendedor, prenda, cantidadCotizada, fechaCotizada, total);
+	
+	l_cotizaciones.push_front(cotizacion);
+
 	return cotizacion;
 }
 

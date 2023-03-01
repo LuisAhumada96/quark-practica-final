@@ -25,6 +25,6 @@ public:
 	void SetPrecioDePrenda(double valor);
 	void BuscarStockDePrendaACotizar();
 	void ReservarStockDePrenda(int& cantidad, bool& stockValido);
-	void IniciarCotizacion();
+	void CotizarPrenda();
 };
 

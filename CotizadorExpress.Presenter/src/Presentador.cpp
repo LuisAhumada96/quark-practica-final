@@ -108,13 +108,13 @@ void Presentador::BuscarStockDePrendaACotizar() {
 	if (prendaEnExistencia == nullptr) {
 		m_view->MostrarTexto("No se encontró la prenda que buscaba");
 		return;
-
 	}
-	m_prendaCotizada = prendaEnExistencia;
+
+	m_prendaCotizada->SetStockDisponible(prendaEnExistencia->GetStockDisponible());
 
 	m_view->MostrarTexto("");
 	m_view->MostrarTexto("INFORMACIÓN:");
-	m_view->MostrarTexto("EXISTE " + std::to_string(prendaEnExistencia->GetStockDisponible()) + "CANTIDAD DE UNIDADES EN STOCK DE LA PRENDA SELECCIONADA");
+	m_view->MostrarTexto("EXISTE " + std::to_string(prendaEnExistencia->GetStockDisponible()) + " CANTIDAD DE UNIDADES EN STOCK DE LA PRENDA SELECCIONADA");
 	m_view->MostrarTexto("");
 }
 
@@ -130,7 +130,7 @@ void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
 		stockValido = true;
 	}
 }
-void Presentador::IniciarCotizacion() {
+void Presentador::CotizarPrenda() {
 	
 	char buffer[80];
 	time_t rawtime = time(nullptr);
@@ -138,7 +138,9 @@ void Presentador::IniciarCotizacion() {
 	localtime_s(&timeinfo, &rawtime);
 
 	struct tm* timeinfoPtr = &timeinfo;
-	strftime(buffer, sizeof(buffer), "%d-%m-%Y %H:%M:%S", timeinfoPtr);
+	strftime(buffer, sizeof(buffer), "%d/%m/%Y %H:%M:%S", timeinfoPtr);
 	auto cotizacion = m_vendedor->RealizarCotizacion(m_prendaCotizada, m_cantidadCotizada,buffer);
-
+	auto cotizacionDatos = cotizacion->ImprimirDatos();
+	
+	m_view->ImprimirCotizacion(cotizacionDatos);
 }

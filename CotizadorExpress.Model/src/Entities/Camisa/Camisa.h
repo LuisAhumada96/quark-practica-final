@@ -3,8 +3,8 @@
 #include "../Prenda/Prenda.h"
 #include <string>
 
-enum class TipoManga {Corta, Larga};
-enum class TipoCuello { Comun,Mao };
+enum class TipoManga {Corta = 1, Larga};
+enum class TipoCuello { Comun = 1,Mao };
 
 class Camisa:public Prenda
 {

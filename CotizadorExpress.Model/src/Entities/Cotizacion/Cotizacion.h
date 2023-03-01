@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 class Prenda;
 class Cotizacion
 {
@@ -19,5 +20,6 @@ public:
 																				m_fechaCotizada(fechaCotizada),
 																				m_resultadoCotizacion(resultadoCotizacion){}
 	~Cotizacion();
+	std::map<std::string,std::string> ImprimirDatos();
 };
 

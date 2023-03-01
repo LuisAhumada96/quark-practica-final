@@ -3,7 +3,7 @@
 #include "../Prenda/Prenda.h"
 
 
-enum PantalonTipo {Comun, Chupin};
+enum PantalonTipo {Comun = 1, Chupin};
 
 class Pantalon:public Prenda
 {

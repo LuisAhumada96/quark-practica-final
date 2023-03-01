@@ -23,6 +23,7 @@ public:
 	void SetCalidad(Calidad calidad);
 	Calidad GetCalidad();
 	int GetStockDisponible();
+	void SetStockDisponible(int cantidad);
 	
 	virtual bool DescripcionCoincide(Prenda* prenda);
 	virtual std::string GetCaracteristicasDePrenda() = 0;

@@ -14,9 +14,11 @@ Pantalon::~Pantalon()
 
 std::string Pantalon::GetCaracteristicasDePrenda()
 {
-	std::string tipo;
-	tipo.append(this->m_nombre + ' ' + std::to_string(this->m_pantalonTipo));
-	return tipo;
+	std::string valor = "";
+	valor.append(this->m_nombre);
+	valor.append(" - ");
+	valor.append(this->m_pantalonTipo == PantalonTipo::Comun ? "Común" : "Chupin");
+	return valor;
 }
 
 std::string Pantalon::GetNombreDePrenda()
