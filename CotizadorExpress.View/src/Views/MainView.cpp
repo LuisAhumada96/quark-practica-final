@@ -43,7 +43,6 @@ void MainView::MostrarMenuPrincipal()
 		std::cin >> opcion;
 		std::system("cls");
 		EjecutarOpcion(opcion.c_str(), haSalido);
-		std::cin.get();
 
 	} while (!haSalido);
 }
@@ -53,7 +52,7 @@ void MainView::EjecutarOpcion(const char* opcion, bool& haSalido) {
 
 	if (str_opcion == "1")
 	{
-		std::cin.get();
+
 		MostrarHistorialDeVendedor();
 		haSalido = false;
 	}
@@ -80,6 +79,7 @@ void MainView::RegresarAMenuPrincipal()
 }
 
 void MainView::MostrarHistorialDeVendedor() {
+	system("cls");
 	MostrarTexto(HEADER_REGISTER);
 	MostrarTexto("-----------------------------------------------------");
 	MostrarTexto(RETURN_MENU_PRINCIPAL);
@@ -87,8 +87,7 @@ void MainView::MostrarHistorialDeVendedor() {
 
 	m_presentador->ListarCotizacionesDeVendedor();
 
-	MostrarTexto(RETURN_MENU_PRINCIPAL);
-	MostrarTexto("-----------------------------------------------------");
+	MostrarMensaje(RETURN_MENU_PRINCIPAL);
 }
 
 
@@ -160,9 +159,7 @@ void MainView::SeleccionarPrenda(const char* opcion, bool& esOpcionValida) {
 		}
 		if (!esOpcionValida)
 		{
-			MostrarTexto(INVALID_OPTION_MESSAGE);
-			std::cin.get();
-			std::cin.get();
+			MostrarMensaje(INVALID_OPTION_MESSAGE);
 		}
 	
 }
@@ -184,21 +181,22 @@ void MainView::SeleccionarCalidadDePrenda()
 
 			std::string valor = "";
 			SetValor(valor, calidades, esValido);
-			m_presentador->SetCalidadDePrendaCotizada(valor);
+			if (esValido) {
+				m_presentador->SetCalidadDePrendaCotizada(valor);
+			}
 			std::system("cls");
 		}
 		catch (const std::exception&)
 		{
-			MostrarTexto(INVALID_OPTION_MESSAGE);
-			std::cin.get();
-			std::cin.get();
+			MostrarMensaje(INVALID_OPTION_MESSAGE);
 		}
 	} while (!esValido);
 }
 
 void MainView::IngresarPrecioUnitario() {
 
-	double valor = 0;
+	std::string valor = "";
+	double valorToDouble = 0;
 	bool esValido = false;
 	do
 	{
@@ -211,13 +209,14 @@ void MainView::IngresarPrecioUnitario() {
 			MostrarTexto("-----------------------------------------------------");
 			MostrarTexto("Paso 4: Ingrese el precio unitario de la prenda a cotizar: ");
 			std::cin >> valor;
+			valorToDouble = std::stod(valor);
 			esValido = true;
 			std::cin.get();
-			m_presentador->SetPrecioDePrenda(valor);
+			m_presentador->SetPrecioDePrenda(valorToDouble);
 		}
-		catch (const std::exception&)
+		catch (const std::exception)
 		{
-
+			MostrarMensaje(INVALID_ARGUMENT_ERROR);
 		}
 
 			
@@ -228,7 +227,8 @@ void MainView::IngresarPrecioUnitario() {
 void MainView::IngresarCantidadACotizar()
 {
 	bool esValido = false;
-	int valor = 0;
+	std::string valor = "0";
+	int valorInt = 0;
 	do
 	{
 		try
@@ -242,15 +242,15 @@ void MainView::IngresarCantidadACotizar()
 			m_presentador->BuscarStockDePrendaACotizar();
 			MostrarTexto("PASO 5: Ingrese la cantidad de unidades a cotizar");
 			std::cin >> valor;
-			m_presentador->ReservarStockDePrenda(valor, esValido);
+
+			valorInt= std::stod(valor);
+			esValido = true;
+			m_presentador->ReservarStockDePrenda(valorInt, esValido);
 
 		}
 		catch (const std::exception e)
 		{
-			MostrarTexto(INVALID_ARGUMENT_ERROR);
-			esValido = false;
-			std::cin.get();
-			std::cin.get();
+			MostrarMensaje(INVALID_ARGUMENT_ERROR);
 		}
 
 	} while (!esValido);
@@ -259,22 +259,14 @@ void MainView::IngresarCantidadACotizar()
 
 void MainView::MostrarCotizacion(std::map<std::string, std::string>& datos)
 {
-	std::system("cls");
-	MostrarTexto(HEADER_COTIZACION);
-	MostrarTexto("-----------------------------------------------------");
-	MostrarTexto(RETURN_MENU_PRINCIPAL);
-	MostrarTexto("-----------------------------------------------------");
 
 	for (auto& d : datos)
 	{
 		MostrarTexto(d.first + d.second);
 	}
-
-	MostrarTexto("-----------------------------------------------------");
-	MostrarTexto(RETURN_MENU_PRINCIPAL);
-	std::cin.get();
-	std::cin.get();
 }
+
+
 
 void MainView::SolicitarDatoDeCotizacion(std::string& valor, std::string& mensaje, std::map<std::string, std::string>& opciones)
 {
@@ -282,8 +274,6 @@ void MainView::SolicitarDatoDeCotizacion(std::string& valor, std::string& mensaj
 
 	do
 	{
-		try
-		{
 			std::system("cls");
 			MostrarTexto(HEADER_COTIZACION);
 			MostrarTexto("-----------------------------------------------------");
@@ -292,11 +282,6 @@ void MainView::SolicitarDatoDeCotizacion(std::string& valor, std::string& mensaj
 			MostrarTexto(mensaje);
 			SetValor(valor, opciones, esValido);
 			std::system("cls");
-		}
-		catch (const std::exception&)
-		{
-
-		}
 
 	} while (!esValido);
 }
@@ -309,12 +294,14 @@ void MainView::SetValor(std::string& valor, std::map<std::string, std::string>& 
 	esValido = true;
 
 	//Verifica si el valor ingresado está en las opciones
+	if (valor == "3") {
+		MostrarMenuPrincipal();
+		esValido = true;
+	}
 
-	if (opciones.find(valor) == opciones.end() && valor != "3")
+	if (opciones.find(valor) == opciones.end())
 	{
-		MostrarTexto(INVALID_OPTION_MESSAGE);
-		std::cin.get();
-		std::cin.get();
+		MostrarMensaje(INVALID_OPTION_MESSAGE);
 		esValido = false;
 	}
 
@@ -353,4 +340,9 @@ void MainView::SetMenuPrendaItems(std::map<int, std::string> items)
 	}
 }
 
-
+void MainView::MostrarMensaje(std::string mensaje)
+{
+	MostrarTexto(mensaje);
+	std::cin.get();
+	std::cin.get();
+}

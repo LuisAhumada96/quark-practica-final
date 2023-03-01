@@ -49,10 +49,16 @@ void Presentador::MostrarDatosDeVendedor()
 
 void Presentador::ListarCotizacionesDeVendedor(){
 
+	if (m_vendedor->GetCotizaciones().size() == 0) {
+		m_view->MostrarTexto("No hay cotizaciones registradas para este vendedor.");
+	}
+
 	for (auto& c : m_vendedor->GetCotizaciones())
 	{
 		auto v = c->ImprimirDatos();
 		m_view->MostrarCotizacion(v);
+		m_view->MostrarTexto("-----------------------------------------------------");
+
 	}
 }
 
@@ -161,4 +167,5 @@ void Presentador::CotizarPrenda() {
 	auto cotizacionDatos = cotizacion->ImprimirDatos();
 	
 	m_view->MostrarCotizacion(cotizacionDatos);
+
 }

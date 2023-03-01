@@ -23,6 +23,8 @@ std::string Camisa::GetCaracteristicasDePrenda()
 	valor.append(this->m_tipoManga == TipoManga::Corta ? "Corta" : "Larga");
 	valor.append(" - ");
 	valor.append(this->m_tipoCuello == TipoCuello::Comun ? "Común" : "Mao");
+	valor.append(" - ");
+	valor.append(this->GetCalidad() == Calidad::Premium ? "Premium" : "Standard");
 	return valor;
 }
 

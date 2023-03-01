@@ -18,6 +18,8 @@ std::string Pantalon::GetCaracteristicasDePrenda()
 	valor.append(this->m_nombre);
 	valor.append(" - ");
 	valor.append(this->m_pantalonTipo == PantalonTipo::Comun ? "Común" : "Chupin");
+	valor.append(" - ");
+	valor.append(this->GetCalidad() == Calidad::Premium ? "Premium" : "Standard");
 	return valor;
 }
 

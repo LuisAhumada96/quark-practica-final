@@ -17,6 +17,10 @@ double CamisaCotizacionStrategy::CotizarPrenda(Prenda* prenda)
     if (camisa->m_tipoManga == TipoManga::Corta) {
         total = total * (1 + this->m_mangaCortaAjuste);
     }
+    if (camisa->m_tipoCuello == TipoCuello::Mao) {
+        total = total * (1 + this->m_cuelloMaoAjuste);
+    }
+
     CotizarPorCalidad(prenda, total);
     return total;
 }
