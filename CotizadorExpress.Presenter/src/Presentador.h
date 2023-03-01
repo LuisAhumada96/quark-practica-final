@@ -20,6 +20,8 @@ public:
 	std::map<std::string, std::string> GetItemsCalidad();
 	void MostrarDatosDeTienda();
 	void MostrarDatosDeVendedor();
+	void ListarCotizacionesDeVendedor();
+
 	void SeleccionarTipoDePrenda(int option);
 	void SetCalidadDePrendaCotizada(std::string calidad);
 	void SetPrecioDePrenda(double valor);

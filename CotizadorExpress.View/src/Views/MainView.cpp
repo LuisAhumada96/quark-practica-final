@@ -9,6 +9,7 @@ const std::string INVALID_ARGUMENT_ERROR = "Por favor, ingrese un valor válido. 
 const std::string UNEXPECTED_ERROR = "Un error inesperado ha ocurrido. Presione ENTER para continuar.";
 const std::string HEADER_PRINCIPAL = COTIZADOR_NAME + " - MENÚ PRINCIPAL";
 const std::string HEADER_COTIZACION = COTIZADOR_NAME + " - COTIZAR";
+const std::string HEADER_REGISTER = COTIZADOR_NAME + " - HISTORIAL DE COTIZACIONES";
 
 const std::string RETURN_MENU_PRINCIPAL = "Presione 3 para volver al menú principal";
 
@@ -79,7 +80,15 @@ void MainView::RegresarAMenuPrincipal()
 }
 
 void MainView::MostrarHistorialDeVendedor() {
+	MostrarTexto(HEADER_REGISTER);
+	MostrarTexto("-----------------------------------------------------");
+	MostrarTexto(RETURN_MENU_PRINCIPAL);
+	MostrarTexto("-----------------------------------------------------");
 
+	m_presentador->ListarCotizacionesDeVendedor();
+
+	MostrarTexto(RETURN_MENU_PRINCIPAL);
+	MostrarTexto("-----------------------------------------------------");
 }
 
 
@@ -248,7 +257,7 @@ void MainView::IngresarCantidadACotizar()
 
 }
 
-void MainView::ImprimirCotizacion(std::map<std::string, std::string>& cotizacionDatos)
+void MainView::MostrarCotizacion(std::map<std::string, std::string>& datos)
 {
 	std::system("cls");
 	MostrarTexto(HEADER_COTIZACION);
@@ -256,10 +265,11 @@ void MainView::ImprimirCotizacion(std::map<std::string, std::string>& cotizacion
 	MostrarTexto(RETURN_MENU_PRINCIPAL);
 	MostrarTexto("-----------------------------------------------------");
 
-	for (auto& d : cotizacionDatos)
+	for (auto& d : datos)
 	{
 		MostrarTexto(d.first + d.second);
 	}
+
 	MostrarTexto("-----------------------------------------------------");
 	MostrarTexto(RETURN_MENU_PRINCIPAL);
 	std::cin.get();

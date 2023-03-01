@@ -41,3 +41,7 @@ Tienda* Vendedor::GetTienda()
 int Vendedor::GetCodigo() {
 	return this->m_codigoVendedor;
 }
+
+std::list<Cotizacion*> Vendedor::GetCotizaciones() {
+	return this->l_cotizaciones;
+}

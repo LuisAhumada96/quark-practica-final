@@ -17,6 +17,7 @@ public:
 	Pantalon();
 	Pantalon(Calidad calidad, int unidadesStock,PantalonTipo pantalonTipo) :Prenda(calidad, unidadesStock), m_pantalonTipo(pantalonTipo) {};
 	~Pantalon();
+	void SetTipoPantalon(PantalonTipo tipo);
 
 	// Heredado vía Prenda
 	virtual std::string GetCaracteristicasDePrenda() override;

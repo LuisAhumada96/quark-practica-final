@@ -27,12 +27,12 @@ public:
 	 void SetMenuPrendaItems(std::map<int,std::string> items) override;
 	 void SolicitarDatoDeCotizacion(std::string& valor, std::string& mensaje, std::map<std::string, std::string>& opciones) override;
 	 void SetValor(std::string& valor, std::map<std::string, std::string>& opciones,bool& esValido) override;
+	 void MostrarCotizacion(std::map<std::string, std::string>& datos) override;
 
 	 void SeleccionarPrenda(const char* opcion, bool& esOpcionValida);
 	 void SeleccionarCalidadDePrenda();
 	 void IngresarPrecioUnitario();
 	 void IngresarCantidadACotizar();
-	 virtual void ImprimirCotizacion(std::map<std::string, std::string>& cotizacionDatos) override;
 };
 
 

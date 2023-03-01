@@ -39,3 +39,6 @@ bool Pantalon::DescripcionCoincide(Prenda* prenda)
 
 	return true;
 }
+void Pantalon::SetTipoPantalon(PantalonTipo tipo) {
+	this->m_pantalonTipo = tipo;
+}

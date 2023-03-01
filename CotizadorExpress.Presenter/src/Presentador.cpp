@@ -3,6 +3,7 @@
 #include "../Entities/Vendedor/Vendedor.h"
 #include "Tienda/Tienda.h"
 #include "Camisa/Camisa.h"
+#include <Pantalon/Pantalon.h>
 #include "Cotizacion/Cotizacion.h"
 #include "../../CotizadorExpress.Model/PrendaFactory.h"
 
@@ -46,11 +47,21 @@ void Presentador::MostrarDatosDeVendedor()
 		std::to_string(this->m_vendedor->GetCodigo()));
 }
 
+void Presentador::ListarCotizacionesDeVendedor(){
+
+	for (auto& c : m_vendedor->GetCotizaciones())
+	{
+		auto v = c->ImprimirDatos();
+		m_view->MostrarCotizacion(v);
+	}
+}
+
 void Presentador::SeleccionarTipoDePrenda(int option)
 {
 	m_prendaCotizada = PrendaFactory::GetPrenda(option);
 
 	auto prendas = PrendaFactory::GetPrendasTipos();
+	std::map<std::string, std::string> opciones = std::map<std::string, std::string>{ {"1","Si"},{"2","No"} };
 
 	switch (option)
 	{
@@ -61,7 +72,6 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 		std::string input = "";
 		std::string paso = "PASO 2.a: La camisa a cotizar, ¿Es Manga Corta?";
 
-		std::map<std::string, std::string> opciones = std::map<std::string, std::string>{ {"1","Si"},{"2","No"} };
 		
 		m_view->SolicitarDatoDeCotizacion(input, paso, opciones);
 		m_view->MostrarTexto("");
@@ -77,13 +87,21 @@ void Presentador::SeleccionarTipoDePrenda(int option)
 		int cuelloInt = std::stoi(input);
 
 		camisa->SetTipoCuello(static_cast<TipoCuello>(cuelloInt));
-
+		break;
 	}
 	case (int)TipoPrenda::Pantalon:
 	{
+		Pantalon* pantalon = dynamic_cast<Pantalon*>(m_prendaCotizada);
+		std::string input = "";
+		std::string paso = "PASO 2: El Pantalón a cotizar, ¿Es Chupín?";
+		
+		m_view->SolicitarDatoDeCotizacion(input, paso, opciones);
+		m_view->MostrarTexto("");
+
+		int pantalonTipoInt = std::stoi(input);
+		pantalon->SetTipoPantalon(static_cast<PantalonTipo>(pantalonTipoInt));
 
 		break;
-
 	}
 	default:
 		break;
@@ -142,5 +160,5 @@ void Presentador::CotizarPrenda() {
 	auto cotizacion = m_vendedor->RealizarCotizacion(m_prendaCotizada, m_cantidadCotizada,buffer);
 	auto cotizacionDatos = cotizacion->ImprimirDatos();
 	
-	m_view->ImprimirCotizacion(cotizacionDatos);
+	m_view->MostrarCotizacion(cotizacionDatos);
 }

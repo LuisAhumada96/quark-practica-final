@@ -24,8 +24,10 @@ public:
 	~Vendedor();
 	std::string GetNombre();
 	std::string GetApellido();
+	std::list<Cotizacion*> GetCotizaciones();
 	int GetCodigo();
 	Tienda* GetTienda();
+
 	Cotizacion* RealizarCotizacion(Prenda* prenda, int cantidadCotizada, std::string fechaCotizada);
 
 };
