@@ -58,7 +58,6 @@ void Presentador::ListarCotizacionesDeVendedor(){
 		auto v = c->ImprimirDatos();
 		m_view->MostrarCotizacion(v);
 		m_view->MostrarTexto("-----------------------------------------------------");
-
 	}
 }
 
@@ -145,13 +144,14 @@ void Presentador::BuscarStockDePrendaACotizar() {
 void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
 {
 	if (cantidad > m_prendaCotizada->GetStockDisponible()) {
-		m_view->MostrarTexto("La cantidad ingresada supera al stock disponible. Por favor ingrese una cantidad menor o igual al stock actual");
+		m_view->MostrarMensaje("La cantidad ingresada supera al stock disponible. Por favor ingrese una cantidad menor o igual al stock actual");
 		stockValido = false;
 		return;
 	}
 	else {
 		m_cantidadCotizada = cantidad;
 		stockValido = true;
+
 	}
 }
 void Presentador::CotizarPrenda() {

@@ -38,6 +38,7 @@ bool Prenda::DescripcionCoincide(Prenda* prenda)
 int Prenda::GetStockDisponible() {
 	return this->m_unidadesStock;
 }
+
 void Prenda::SetStockDisponible(int cantidad) {
 	this->m_unidadesStock = cantidad;
 }

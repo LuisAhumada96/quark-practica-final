@@ -51,5 +51,6 @@ std::string Tienda::GetDireccion()
 
 PrendaCotizacionStrategy* Tienda::GetPoliticaDeCotizacion(std::string nombreDePrenda)
 {
-	return CotizacionStrategyFactory::GetStrategy(nombreDePrenda);
+
+	return CotizacionStrategyFactory::GetInstance()->GetStrategy(nombreDePrenda);
 }
