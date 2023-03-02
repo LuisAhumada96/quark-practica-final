@@ -149,14 +149,15 @@ void Presentador::BuscarStockDePrendaACotizar() {
 
 void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
 {
-	if (cantidad > m_prendaCotizada->GetStockDisponible()) {
-
-		m_prendaCotizada->SetStockDisponible(m_prendaCotizada->GetStockDisponible() - cantidad);
+	Prenda* p = m_vendedor->GetTienda()->BuscarPrenda(m_prendaCotizada);
+	if (cantidad > p->GetStockDisponible()) {
+		
 		m_view->MostrarMensaje("La cantidad ingresada supera al stock disponible. Por favor ingrese una cantidad menor o igual al stock actual");
 		stockValido = false;
 		return;
 	}
 	else {
+		p->SetStockDisponible(p->GetStockDisponible() - cantidad);
 		m_cantidadCotizada = cantidad;
 		stockValido = true;
 
@@ -171,6 +172,7 @@ void Presentador::CotizarPrenda() {
 
 	struct tm* timeinfoPtr = &timeinfo;
 	strftime(buffer, sizeof(buffer), "%d/%m/%Y %H:%M:%S", timeinfoPtr);
+
 	auto cotizacion = m_vendedor->RealizarCotizacion(m_prendaCotizada, m_cantidadCotizada,buffer);
 	auto cotizacionDatos = cotizacion->ImprimirDatos();
 	
