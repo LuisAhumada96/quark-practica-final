@@ -15,7 +15,7 @@ Cotizacion* Vendedor::RealizarCotizacion(Prenda *prenda,int cantidadCotizada, st
 
 	double total = precioUnitarioCotizado * cantidadCotizada;
 
-	int id = static_cast<int>(l_cotizaciones.size());
+	int id = static_cast<int>(l_cotizaciones.size() + 1);
 	Cotizacion* cotizacion = new Cotizacion(id, this->m_codigoVendedor, prenda, cantidadCotizada, fechaCotizada, total);
 	
 	l_cotizaciones.push_back(cotizacion);
