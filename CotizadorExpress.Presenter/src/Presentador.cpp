@@ -24,13 +24,13 @@ Presentador::~Presentador()
 
 void Presentador::GetItemsMenuDePrendas()
 {
-	auto items = PrendaFactory::GetPrendasTipos();
+	auto items = PrendaFactory::GetInstance()->GetPrendasTipos();
 	m_view->SetMenuPrendaItems(items);
 }
 
 std::map<std::string, std::string> Presentador::GetItemsCalidad()
 {
-	auto items = PrendaFactory::GetPrendasCalidad();
+	auto items = PrendaFactory::GetInstance()->GetPrendasCalidad();
 	return items;
 }
 
@@ -55,17 +55,23 @@ void Presentador::ListarCotizacionesDeVendedor(){
 
 	for (auto& c : m_vendedor->GetCotizaciones())
 	{
-		auto v = c->ImprimirDatos();
-		m_view->MostrarCotizacion(v);
+		auto datos = c->ImprimirDatos();
+
+		for (auto& d : datos)
+		{
+			m_view->MostrarTexto(d.first + d.second);
+		}
+
 		m_view->MostrarTexto("-----------------------------------------------------");
 	}
 }
 
 void Presentador::SeleccionarTipoDePrenda(int option)
 {
-	m_prendaCotizada = PrendaFactory::GetPrenda(option);
+	m_prendaCotizada = PrendaFactory::GetInstance()->GetPrenda(option);
 
-	auto prendas = PrendaFactory::GetPrendasTipos();
+	auto prendas = PrendaFactory::GetInstance()->GetPrendasTipos();
+	
 	std::map<std::string, std::string> opciones = std::map<std::string, std::string>{ {"1","Si"},{"2","No"} };
 
 	switch (option)
@@ -144,6 +150,8 @@ void Presentador::BuscarStockDePrendaACotizar() {
 void Presentador::ReservarStockDePrenda(int &cantidad, bool &stockValido)
 {
 	if (cantidad > m_prendaCotizada->GetStockDisponible()) {
+
+		m_prendaCotizada->SetStockDisponible(m_prendaCotizada->GetStockDisponible() - cantidad);
 		m_view->MostrarMensaje("La cantidad ingresada supera al stock disponible. Por favor ingrese una cantidad menor o igual al stock actual");
 		stockValido = false;
 		return;

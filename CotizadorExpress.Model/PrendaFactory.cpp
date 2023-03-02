@@ -3,8 +3,22 @@
 #include "src/Entities/Camisa/Camisa.h"
 #include "src/Entities/Pantalon/Pantalon.h"
 
+PrendaFactory* PrendaFactory::m_prendaFactory = nullptr;
+
 PrendaFactory::PrendaFactory()
 {
+}
+
+PrendaFactory::~PrendaFactory()
+{
+}
+
+PrendaFactory* PrendaFactory::GetInstance()
+{
+    if (m_prendaFactory == nullptr) {
+        m_prendaFactory = new PrendaFactory();
+    }
+    return m_prendaFactory;
 }
 
 std::map<int,std::string> PrendaFactory::GetPrendasTipos()

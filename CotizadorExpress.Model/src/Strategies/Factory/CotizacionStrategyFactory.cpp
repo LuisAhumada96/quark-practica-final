@@ -3,8 +3,13 @@
 #include "../Prendas/PantalonCotizacionStrategy.h"
 #include "../Prendas/CamisaCotizacionStrategy.h"
 
+CotizacionStrategyFactory* CotizacionStrategyFactory::m_cotizacionStrategyFactory = nullptr;
+
 CotizacionStrategyFactory::CotizacionStrategyFactory()
 {
+}
+CotizacionStrategyFactory::~CotizacionStrategyFactory() {
+
 }
 
 PrendaCotizacionStrategy* CotizacionStrategyFactory::GetStrategy(std::string prenda)

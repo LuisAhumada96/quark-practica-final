@@ -52,7 +52,6 @@ void MainView::EjecutarOpcion(const char* opcion, bool& haSalido) {
 
 	if (str_opcion == "1")
 	{
-
 		MostrarHistorialDeVendedor();
 		haSalido = false;
 	}
@@ -71,11 +70,6 @@ void MainView::EjecutarOpcion(const char* opcion, bool& haSalido) {
 		std::cin.get();
 		haSalido = false;
 	}
-}
-
-void MainView::RegresarAMenuPrincipal()
-{
-	MostrarMenuPrincipal();
 }
 
 void MainView::MostrarHistorialDeVendedor() {
@@ -119,7 +113,7 @@ void MainView::MostrarMenuPrendas() {
 		std::cin >> opcionString;
 		SeleccionarPrenda(opcionString.c_str(), esOpcionValida);
 
-		std:system("cls");
+		system("cls");
 
 	} while (!esOpcionValida);
 
@@ -243,7 +237,7 @@ void MainView::IngresarCantidadACotizar()
 			MostrarTexto("PASO 5: Ingrese la cantidad de unidades a cotizar");
 			std::cin >> valor;
 
-			valorInt= std::stod(valor);
+			valorInt= std::stoi(valor);
 			esValido = true;
 			m_presentador->ReservarStockDePrenda(valorInt, esValido);
 
@@ -259,11 +253,18 @@ void MainView::IngresarCantidadACotizar()
 
 void MainView::MostrarCotizacion(std::map<std::string, std::string>& datos)
 {
+	std::system("cls");
+	MostrarTexto(HEADER_COTIZACION);
+	MostrarTexto("-----------------------------------------------------");
+	MostrarTexto(RETURN_MENU_PRINCIPAL);
+	MostrarTexto("-----------------------------------------------------");
 
 	for (auto& d : datos)
 	{
 		MostrarTexto(d.first + d.second);
 	}
+	MostrarTexto("-----------------------------------------------------");
+	MostrarMensaje(RETURN_MENU_PRINCIPAL);
 }
 
 
@@ -295,7 +296,7 @@ void MainView::SetValor(std::string& valor, std::map<std::string, std::string>& 
 
 	//Verifica si el valor ingresado está en las opciones
 	if (valor == "3") {
-		MostrarMenuPrincipal();
+		RegresarAMenuPrincipal();
 		esValido = true;
 	}
 
@@ -306,7 +307,19 @@ void MainView::SetValor(std::string& valor, std::map<std::string, std::string>& 
 	}
 
 }
+void MainView::SetMenuPrendaItems(std::map<int, std::string> items)
+{
+	if (items.empty())
+	{
+		MostrarTexto("Ups!! No se encontró ningún tipo de prenda.");
+	}
+	else
+	{
+		m_menuPrendasItems = items;
+	}
+}
 
+#pragma region Auxiliar
 void MainView::CargarOpciones(std::map<std::string, std::string>& opciones) {
 
 	if (opciones.size() > 0) {
@@ -328,21 +341,22 @@ void MainView::MostrarTexto(const std::string& texto)
 	std::cout << texto << std::endl;
 }
 
-void MainView::SetMenuPrendaItems(std::map<int, std::string> items)
-{
-	if (items.empty())
-	{
-		MostrarTexto("Ups!! No se encontró ningún tipo de prenda.");
-	}
-	else
-	{
-		m_menuPrendasItems = items;
-	}
-}
-
 void MainView::MostrarMensaje(std::string mensaje)
 {
 	MostrarTexto(mensaje);
 	std::cin.get();
 	std::cin.get();
 }
+
+void MainView::RegresarAMenuPrincipal()
+{
+	MostrarMenuPrincipal();
+}
+#pragma endregion
+
+
+
+
+
+
+

@@ -20,7 +20,7 @@ std::string Camisa::GetCaracteristicasDePrenda()
 	std::string valor = "";
 	valor.append(this->m_nombre);
 	valor.append(" - ");
-	valor.append(this->m_tipoManga == TipoManga::Corta ? "Corta" : "Larga");
+	valor.append(this->m_tipoManga == TipoManga::Corta ? "Manga Corta" : "Manga Larga");
 	valor.append(" - ");
 	valor.append(this->m_tipoCuello == TipoCuello::Comun ? "Común" : "Mao");
 	valor.append(" - ");

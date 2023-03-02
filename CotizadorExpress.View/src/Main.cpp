@@ -6,7 +6,7 @@
 	Autor: Luis Ignacio Ahumada | Discord: elMister (#7337)
 	
 	Proyecto: Desafío Final de Curso de C++ de Quark Academy - 2023.
-	Patrones de software utilizados: Factory, Strategy
+	Patrones de software utilizados: Factory, Strategy, Singleton
 	Patrones de arquitectura: MVP (Modelo - Vista - Presentador)
 
 */

@@ -10,11 +10,13 @@ class PrendaCotizacionStrategy;
 class CotizacionStrategyFactory
 {
 private:
-	CotizacionStrategyFactory();
 	static CotizacionStrategyFactory* m_cotizacionStrategyFactory;
+	CotizacionStrategyFactory();
+	~CotizacionStrategyFactory();
 public:
 
-	CotizacionStrategyFactory(CotizacionStrategyFactory& other) = delete;
+	// No está permitido crear una copia, es una instancia única en el sistema
+	CotizacionStrategyFactory(CotizacionStrategyFactory& otro) = delete;
 	void operator=(const CotizacionStrategyFactory&) = delete;
 	
 	PrendaCotizacionStrategy* GetStrategy(std::string prenda);

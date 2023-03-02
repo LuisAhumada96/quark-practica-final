@@ -5,12 +5,16 @@ class Prenda;
 enum class TipoPrenda {Camisa = 1, Pantalon};
 class PrendaFactory
 {
-public:
+private:
+	static PrendaFactory* m_prendaFactory;
 	PrendaFactory();
-	~PrendaFactory() = default;
-	static std::map<int, std::string> GetPrendasTipos();
-	static std::map<std::string, std::string> GetPrendasCalidad();
-	static Prenda* GetPrenda(int tipoPrenda);
+	~PrendaFactory();
+public:
+	
+	static PrendaFactory* GetInstance();
+	std::map<int, std::string> GetPrendasTipos();
+	std::map<std::string, std::string> GetPrendasCalidad();
+	Prenda* GetPrenda(int tipoPrenda);
 	
 };
 
